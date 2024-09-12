@@ -31,9 +31,8 @@ script = ExtResource("3_8vfx5")
 script = ExtResource("4_ls5io")
 target = NodePath("../../../Target")
 
-[node name="FleeBehavior" type="Node" parent="Level/Agent/BehaviorGroup" node_paths=PackedStringArray("target")]
+[node name="FleeBehavior" type="Node" parent="Level/Agent/BehaviorGroup"]
 script = ExtResource("4_se3gq")
-target = NodePath("../../../Agent2")
 influence = 0.9
 
 [node name="Agent2" parent="Level" instance=ExtResource("1_mjmbm")]
@@ -46,9 +45,8 @@ script = ExtResource("3_8vfx5")
 script = ExtResource("4_ls5io")
 target = NodePath("../../../Target")
 
-[node name="FleeBehavior" type="Node" parent="Level/Agent2/BehaviorGroup" node_paths=PackedStringArray("target")]
+[node name="FleeBehavior" type="Node" parent="Level/Agent2/BehaviorGroup"]
 script = ExtResource("4_se3gq")
-target = NodePath("../../../Agent")
 influence = 0.9
 
 [node name="Target" type="CharacterBody3D" parent="Level"]

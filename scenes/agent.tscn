@@ -6,7 +6,7 @@
 radius = 0.242222
 height = 0.991746
 
-[node name="Agent" type="CharacterBody3D"]
+[node name="Agent" type="CharacterBody3D" groups=["Agent"]]
 collision_mask = 0
 
 [node name="Modelo" type="Marker3D" parent="."]
