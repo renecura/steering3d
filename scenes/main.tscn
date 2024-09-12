@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmwynttqipxpc"]
+
+[ext_resource type="PackedScene" uid="uid://bxa0eose3y05k" path="res://scenes/agent.tscn" id="1_mjmbm"]
+[ext_resource type="Script" path="res://scripts/behavior_group.gd" id="3_8vfx5"]
+[ext_resource type="Script" path="res://scripts/target.gd" id="3_h5rfh"]
+[ext_resource type="Script" path="res://scripts/behaviors/seek.gd" id="4_ls5io"]
+[ext_resource type="Script" path="res://scripts/behaviors/flee.gd" id="4_se3gq"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Setup" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Setup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Setup"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Setup"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Agent" parent="Level" instance=ExtResource("1_mjmbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20592, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent"]
+script = ExtResource("3_8vfx5")
+
+[node name="SeekBehavior" type="Node" parent="Level/Agent/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_ls5io")
+target = NodePath("../../../Target")
+
+[node name="FleeBehavior" type="Node" parent="Level/Agent/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_se3gq")
+target = NodePath("../../../Agent2")
+influence = 0.9
+
+[node name="Agent2" parent="Level" instance=ExtResource("1_mjmbm")]
+metadata/_edit_group_ = true
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent2"]
+script = ExtResource("3_8vfx5")
+
+[node name="SeekBehavior" type="Node" parent="Level/Agent2/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_ls5io")
+target = NodePath("../../../Target")
+
+[node name="FleeBehavior" type="Node" parent="Level/Agent2/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_se3gq")
+target = NodePath("../../../Agent")
+influence = 0.9
+
+[node name="Target" type="CharacterBody3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+script = ExtResource("3_h5rfh")
+SPEED = 50.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Target"]

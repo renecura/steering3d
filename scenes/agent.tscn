@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxa0eose3y05k"]
+
+[ext_resource type="PackedScene" uid="uid://bijpgd0rsg7ag" path="res://scenes/bicho01.tscn" id="1_dyd5l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_djm07"]
+radius = 0.242222
+height = 0.991746
+
+[node name="Agent" type="CharacterBody3D"]
+collision_mask = 0
+
+[node name="Modelo" type="Marker3D" parent="."]
+
+[node name="Bicho" parent="Modelo" instance=ExtResource("1_dyd5l")]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_djm07")
