@@ -1,53 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmwynttqipxpc"]
+[gd_scene load_steps=11 format=3 uid="uid://bmwynttqipxpc"]
 
 [ext_resource type="PackedScene" uid="uid://bxa0eose3y05k" path="res://scenes/agent.tscn" id="1_mjmbm"]
 [ext_resource type="Script" path="res://scripts/behavior_group.gd" id="3_8vfx5"]
 [ext_resource type="Script" path="res://scripts/target.gd" id="3_h5rfh"]
-[ext_resource type="Script" path="res://scripts/behaviors/seek.gd" id="4_ls5io"]
+[ext_resource type="Script" path="res://scripts/behaviors/arrive.gd" id="4_4cnlt"]
 [ext_resource type="Script" path="res://scripts/behaviors/flee.gd" id="4_se3gq"]
+[ext_resource type="Script" path="res://scripts/behaviors/wander.gd" id="6_0jnur"]
+[ext_resource type="Script" path="res://scripts/behaviors/separation.gd" id="7_b7stl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rcshn"]
+
+[sub_resource type="Sky" id="Sky_x5taa"]
+sky_material = SubResource("ProceduralSkyMaterial_rcshn")
+
+[sub_resource type="Environment" id="Environment_i285a"]
+background_mode = 2
+sky = SubResource("Sky_x5taa")
 
 [node name="Main" type="Node3D"]
 
 [node name="Setup" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Setup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Setup"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Setup"]
+environment = SubResource("Environment_i285a")
 
 [node name="Level" type="Node3D" parent="."]
-
-[node name="Agent" parent="Level" instance=ExtResource("1_mjmbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20592, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="BehaviorGroup" type="Node" parent="Level/Agent"]
-script = ExtResource("3_8vfx5")
-
-[node name="SeekBehavior" type="Node" parent="Level/Agent/BehaviorGroup" node_paths=PackedStringArray("target")]
-script = ExtResource("4_ls5io")
-target = NodePath("../../../Target")
-
-[node name="FleeBehavior" type="Node" parent="Level/Agent/BehaviorGroup"]
-script = ExtResource("4_se3gq")
-influence = 0.9
-
-[node name="Agent2" parent="Level" instance=ExtResource("1_mjmbm")]
-metadata/_edit_group_ = true
-
-[node name="BehaviorGroup" type="Node" parent="Level/Agent2"]
-script = ExtResource("3_8vfx5")
-
-[node name="SeekBehavior" type="Node" parent="Level/Agent2/BehaviorGroup" node_paths=PackedStringArray("target")]
-script = ExtResource("4_ls5io")
-target = NodePath("../../../Target")
-
-[node name="FleeBehavior" type="Node" parent="Level/Agent2/BehaviorGroup"]
-script = ExtResource("4_se3gq")
-influence = 0.9
 
 [node name="Target" type="CharacterBody3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
@@ -55,3 +38,74 @@ script = ExtResource("3_h5rfh")
 SPEED = 50.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level/Target"]
+
+[node name="Agent" parent="Level" instance=ExtResource("1_mjmbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.20592, 0, 0)
+visible = false
+metadata/_edit_group_ = true
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent"]
+script = ExtResource("3_8vfx5")
+
+[node name="FleeBehavior" type="Node" parent="Level/Agent/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_se3gq")
+target = NodePath("../../../Agent2")
+influence = 0.95
+
+[node name="ArriveBehavior" type="Node" parent="Level/Agent/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_4cnlt")
+target = NodePath("../../../Target")
+
+[node name="Agent2" parent="Level" instance=ExtResource("1_mjmbm")]
+visible = false
+metadata/_edit_group_ = true
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent2"]
+script = ExtResource("3_8vfx5")
+max_steering = 10.0
+
+[node name="FleeBehavior" type="Node" parent="Level/Agent2/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_se3gq")
+target = NodePath("../../../Agent")
+influence = 0.0
+
+[node name="ArriveBehavior" type="Node" parent="Level/Agent2/BehaviorGroup" node_paths=PackedStringArray("target")]
+script = ExtResource("4_4cnlt")
+target = NodePath("../../../Target")
+
+[node name="Agent3" parent="Level" instance=ExtResource("1_mjmbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent3"]
+script = ExtResource("3_8vfx5")
+max_velocity = 0.2
+max_steering = 0.3
+max_speed = 0.2
+
+[node name="WanderBehavior" type="Node" parent="Level/Agent3/BehaviorGroup"]
+script = ExtResource("6_0jnur")
+circle_radius = 0.9
+
+[node name="Agent4" parent="Level" instance=ExtResource("1_mjmbm")]
+collision_layer = 3
+collision_mask = 2
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent4"]
+script = ExtResource("3_8vfx5")
+
+[node name="SeparationBehavior" type="Node" parent="Level/Agent4/BehaviorGroup"]
+script = ExtResource("7_b7stl")
+radius = 3.0
+
+[node name="Agent5" parent="Level" instance=ExtResource("1_mjmbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860023, 0, 0)
+collision_layer = 3
+collision_mask = 2
+
+[node name="BehaviorGroup" type="Node" parent="Level/Agent5"]
+script = ExtResource("3_8vfx5")
+
+[node name="SeparationBehavior" type="Node" parent="Level/Agent5/BehaviorGroup"]
+script = ExtResource("7_b7stl")
+radius = 3.0

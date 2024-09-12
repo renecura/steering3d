@@ -12,12 +12,13 @@ func _physics_process(delta: float) -> void:
 	var steering := Vector3.ZERO
 	
 	for b: Behavior in behaviors:
-		steering += b.steer(agent) * b.influence
+		steering += b.steer(agent).limit_length(max_steering) * b.influence
 	
-	agent.velocity += steering
+	agent.velocity += steering * delta
 	agent.velocity.limit_length(max_speed)
 	
 	# TODO: Reemplazar Vector3.UP por un arriba calculado así rollea
-	agent.look_at(agent.velocity, Vector3.UP)
+	if agent.velocity.length_squared() > 0:
+		agent.look_at(agent.velocity, agent.transform.basis.y)
 	
 	agent.move_and_slide()
