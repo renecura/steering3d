@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://4q015ij0vrej"]
+[gd_scene load_steps=6 format=3 uid="uid://4q015ij0vrej"]
 
 [ext_resource type="PackedScene" uid="uid://bxa0eose3y05k" path="res://scenes/agent.tscn" id="1_1h08d"]
 [ext_resource type="Script" path="res://scripts/behavior_group.gd" id="2_tmy3c"]
-[ext_resource type="Script" path="res://scripts/behaviors/aligment.gd" id="4_qmv08"]
 [ext_resource type="Script" path="res://scripts/behaviors/separation.gd" id="5_udmop"]
 [ext_resource type="Script" path="res://scripts/behaviors/cohesion.gd" id="6_duq55"]
 [ext_resource type="Script" path="res://scripts/behaviors/arrive.gd" id="6_oxpkk"]
@@ -21,15 +20,10 @@ script = ExtResource("6_oxpkk")
 slow_radius = 5.0
 influence = 0.5
 
-[node name="AligmentBehavior" type="Node" parent="BehaviorGroup" index="1"]
-script = ExtResource("4_qmv08")
-radius = 5.0
-influence = 0.0
-
-[node name="SeparationBehavior" type="Node" parent="BehaviorGroup" index="2"]
+[node name="SeparationBehavior" type="Node" parent="BehaviorGroup" index="1"]
 script = ExtResource("5_udmop")
-radius = 3.0
-
-[node name="CohesionBehavior" type="Node" parent="BehaviorGroup" index="3"]
-script = ExtResource("6_duq55")
 radius = 5.0
+
+[node name="CohesionBehavior" type="Node" parent="BehaviorGroup" index="2"]
+script = ExtResource("6_duq55")
+influence = 0.8

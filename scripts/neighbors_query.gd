@@ -18,4 +18,5 @@ func get_neighbors(agent: CharacterBody3D) -> Array:
 	var direct_space_state = agent.get_world_3d().direct_space_state
 	var result := direct_space_state.intersect_shape(query)
 	
-	return result.filter(func(c): return c["collider"] != agent).map(func(c): return c["collider"])
+	# return result.filter(func(c): return c["collider"] != agent).map(func(c): return c["collider"])
+	return result.map(func(c): return c["collider"])

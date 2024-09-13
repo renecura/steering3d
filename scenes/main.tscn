@@ -33,6 +33,7 @@ environment = SubResource("Environment_i285a")
 
 [node name="Level" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_m0eny")
+bicho_scene = ExtResource("2_f1o4b")
 target = NodePath("Target")
 
 [node name="Target" type="CharacterBody3D" parent="Level"]
@@ -52,33 +53,3 @@ omni_range = 50.0
 material = SubResource("StandardMaterial3D_dxj6d")
 
 [node name="Bichos" type="Node3D" parent="Level"]
-
-[node name="Agent" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent2" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent3" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent4" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent5" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent6" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent7" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent8" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent9" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent10" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent11" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent12" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent13" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent14" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]
-
-[node name="Agent15" parent="Level/Bichos" instance=ExtResource("2_f1o4b")]

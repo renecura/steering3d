@@ -6,18 +6,19 @@
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature_007" index="0"]
-bones/3/rotation = Quaternion(-0.0175804, -0.00174528, 0.660674, 0.750465)
-bones/4/rotation = Quaternion(0.00360559, 0.00536152, -0.213036, 0.977023)
-bones/7/rotation = Quaternion(0.00767637, -0.0156153, -0.629393, 0.776892)
-bones/8/rotation = Quaternion(0.00205692, 0.00440936, 0.143196, 0.989682)
-bones/12/rotation = Quaternion(-2.02144e-07, -8.30938e-09, 0.34299, 0.939339)
-bones/13/rotation = Quaternion(4.42129e-08, 5.99316e-09, 0.0370479, 0.999313)
-bones/14/rotation = Quaternion(-1.04108e-08, 2.38563e-08, -0.108487, 0.994098)
-bones/17/rotation = Quaternion(-2.34056e-08, -9.02302e-08, -0.297648, 0.954676)
-bones/18/rotation = Quaternion(6.25779e-08, -2.31907e-09, -0.0460311, 0.99894)
-bones/19/rotation = Quaternion(-6.19661e-08, -2.04206e-08, 0.130564, 0.99144)
-bones/21/rotation = Quaternion(-0.677056, -3.94744e-08, 7.08167e-08, 0.735932)
-bones/23/rotation = Quaternion(-0.68283, -4.74597e-08, 9.49565e-09, 0.730577)
+bones/3/rotation = Quaternion(-0.0176451, -0.000875079, 0.622812, 0.782172)
+bones/4/rotation = Quaternion(0.00213665, 0.00317721, -0.138947, 0.990292)
+bones/7/rotation = Quaternion(0.00794761, -0.015479, -0.615745, 0.787754)
+bones/8/rotation = Quaternion(0.00122643, 0.00262909, 0.0867947, 0.996222)
+bones/12/rotation = Quaternion(-1.8354e-07, -6.44197e-09, 0.29901, 0.95425)
+bones/13/rotation = Quaternion(4.79857e-08, 5.58819e-09, 0.028922, 0.999582)
+bones/14/rotation = Quaternion(-5.55195e-09, 2.40969e-08, -0.115678, 0.993287)
+bones/17/rotation = Quaternion(-2.36675e-08, -8.94379e-08, -0.302501, 0.953149)
+bones/18/rotation = Quaternion(6.19446e-08, -2.24701e-09, -0.0481017, 0.998842)
+bones/19/rotation = Quaternion(-6.34283e-08, -1.83078e-08, 0.0768354, 0.997044)
+bones/21/rotation = Quaternion(-0.6416, -3.96743e-08, 7.31577e-08, 0.767039)
+bones/23/rotation = Quaternion(-0.647354, -4.71761e-08, 1.39584e-08, 0.762189)
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Armature_004Action_002"
+speed_scale = 5.0
