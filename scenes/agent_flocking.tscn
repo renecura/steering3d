@@ -22,8 +22,9 @@ influence = 0.5
 
 [node name="SeparationBehavior" type="Node" parent="BehaviorGroup" index="1"]
 script = ExtResource("5_udmop")
-radius = 5.0
+radius = 4.0
 
 [node name="CohesionBehavior" type="Node" parent="BehaviorGroup" index="2"]
 script = ExtResource("6_duq55")
+radius = 8.0
 influence = 0.8

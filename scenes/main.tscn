@@ -12,6 +12,9 @@ sky_material = SubResource("ProceduralSkyMaterial_rcshn")
 [sub_resource type="Environment" id="Environment_i285a"]
 background_mode = 2
 sky = SubResource("Sky_x5taa")
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxj6d"]
 emission_enabled = true
@@ -34,6 +37,7 @@ environment = SubResource("Environment_i285a")
 [node name="Level" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("1_m0eny")
 bicho_scene = ExtResource("2_f1o4b")
+cantidad = 50
 target = NodePath("Target")
 
 [node name="Target" type="CharacterBody3D" parent="Level"]
@@ -46,7 +50,8 @@ visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Level/Target"]
 light_color = Color(0.933211, 0.593128, 0.774312, 1)
-light_energy = 4.879
+light_energy = 10.0
+light_size = 1.0
 omni_range = 50.0
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Level/Target"]
