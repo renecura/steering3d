@@ -19,6 +19,6 @@ func _physics_process(delta: float) -> void:
 	
 	# TODO: Reemplazar Vector3.UP por un arriba calculado así rollea
 	if agent.velocity.length_squared() > 0:
-		agent.look_at(agent.velocity, agent.transform.basis.y)
+		agent.look_at(agent.velocity, Vector3.UP)
 	
 	agent.move_and_slide()

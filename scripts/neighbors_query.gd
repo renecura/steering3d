@@ -9,6 +9,7 @@ func _init(radius: float = 2.0):
 	
 	query = PhysicsShapeQueryParameters3D.new()
 	query.shape_rid = shape_rid
+	query.collide_with_bodies = true
 
 func get_neighbors(agent: CharacterBody3D) -> Array:
 	query.collision_mask = agent.collision_mask

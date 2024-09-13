@@ -13,7 +13,7 @@ func steer(agent: CharacterBody3D) -> Vector3:
 	
 	for n in otros:
 		var repulsive_force = agent.global_position - n.global_position
-		repulsive_force = repulsive_force.normalized() / radius
+		repulsive_force = repulsive_force.normalized() * group.max_speed / radius
 		steer += repulsive_force
 		
 	return steer

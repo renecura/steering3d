@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmwynttqipxpc"]
+[gd_scene load_steps=8 format=3 uid="uid://bmwynttqipxpc"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_m0eny"]
 [ext_resource type="PackedScene" uid="uid://4q015ij0vrej" path="res://scenes/agent_flocking.tscn" id="2_f1o4b"]
@@ -13,6 +13,10 @@ sky_material = SubResource("ProceduralSkyMaterial_rcshn")
 background_mode = 2
 sky = SubResource("Sky_x5taa")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxj6d"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
 [node name="Main" type="Node3D"]
 
 [node name="Setup" type="Node" parent="."]
@@ -22,6 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Setup"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Setup"]
 environment = SubResource("Environment_i285a")
@@ -36,6 +41,15 @@ script = ExtResource("3_h5rfh")
 SPEED = 50.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level/Target"]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level/Target"]
+light_color = Color(0.933211, 0.593128, 0.774312, 1)
+light_energy = 4.879
+omni_range = 50.0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Level/Target"]
+material = SubResource("StandardMaterial3D_dxj6d")
 
 [node name="Bichos" type="Node3D" parent="Level"]
 

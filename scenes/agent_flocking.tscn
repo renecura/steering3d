@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/behaviors/arrive.gd" id="6_oxpkk"]
 
 [node name="Agent" instance=ExtResource("1_1h08d")]
+collision_mask = 1
 
 [node name="BehaviorGroup" type="Node" parent="." index="2"]
 script = ExtResource("2_tmy3c")
@@ -18,16 +19,17 @@ max_speed = 80.0
 [node name="ArriveBehavior" type="Node" parent="BehaviorGroup" index="0"]
 script = ExtResource("6_oxpkk")
 slow_radius = 5.0
+influence = 0.5
 
 [node name="AligmentBehavior" type="Node" parent="BehaviorGroup" index="1"]
 script = ExtResource("4_qmv08")
 radius = 5.0
+influence = 0.0
 
 [node name="SeparationBehavior" type="Node" parent="BehaviorGroup" index="2"]
 script = ExtResource("5_udmop")
-radius = 5.0
+radius = 3.0
 
 [node name="CohesionBehavior" type="Node" parent="BehaviorGroup" index="3"]
 script = ExtResource("6_duq55")
 radius = 5.0
-influence = 0.9
